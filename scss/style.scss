@@ -1,0 +1,72 @@
+@charset "utf-8";
+
+/*全体　共通
+最初から設定してあるので特に変更
+しなくても大丈夫です♪
+-----------------*/
+body{
+	overflow-x : hidden;
+	font-family: Roboto, "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+	line-height: 1.75;
+	text-align: justify;
+	font-size: 16px;
+	color: #111;
+  font-weight: 400;
+	-webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+
+/*　パディングをサイズ内側にする処理　*/
+* {
+	padding:0;
+	margin:0;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-o-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/*ーーーーーーーーーーー*/
+/*この下から記述*/
+/*ーーーーーーーーーーー*/
+
+/* ------------------------------------
+
+cmn設定
+
+------------------------------------ */
+@media print, screen and (max-width: 760px) {
+  .pc {
+    display: none !important;
+  }
+  .sp-mini {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 320px) {
+  .sp-mini {
+    display: inherit !important;
+  }
+}
+@media print, screen and (min-width: 761px) {
+  .sp {
+    display: none !important;
+  }
+  .sp-mini {
+    display: none !important;
+  }
+}
+
+a {
+	color: inherit;
+	&:hover {
+		img {
+			opacity: 0.7;
+		}
+	}
+}
+

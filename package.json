@@ -1,0 +1,24 @@
+{
+  "name": "janken",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "config": {
+    "documentroot": "janken/"
+  },
+  "scripts": {
+    "sass:once": "sass    scss:css",
+    "sass": "sass --watch scss:css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+git@github.com:kogamari1212/janken.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "homepage": "https://github.com/kogamari1212/janken",
+  "devDependencies": {
+    "sass": "^1.32.8"
+  }
+}
