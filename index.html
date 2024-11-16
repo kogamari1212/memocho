@@ -10,7 +10,7 @@
 </script>
 <meta name="format-detection" content="telephone=no">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>じゃんけん</title>
+<title>メモちょ</title>
 <meta name="description" content="">
 
 <meta property="og:title" content="">
@@ -26,22 +26,76 @@
 <link rel="stylesheet" type="text/css" href="css/sanitize.css" />
 <link rel="stylesheet" type="text/css" href="css/style.css" />
 
-<script src="js/cmn/jquery.min.js"></script>
-<script>
 
-</script>
 </head>
 
 <body>
-  <div class="container">
-    <section class="title_section">
-      <h1>メモちょ</h1>
-    </section>
-    <!-- //title_section -->
+<div class="container">
+  <section class="title_section">
+    <h1>イベント情報取得メモちょ</h1>
+  </section>
+  <!-- //title_section -->
 
+  <main>
+    <input type="text" id="input" placeholder="ConnpassのイベントURLを入力してください">
+    <textarea id="text_area" placeholder="結果が表示されます"></textarea>
+    <ul>
+      <li id="fetch">情報を取得する</li>
+      <li id="clear">Clear</li>
+    </ul>
+  </main>
+</div>
+<!-- //container -->
 
+<script src="js/cmn/jquery.min.js"></script>
+<script>
+  // Fetchボタンをクリック
+  $("#fetch").on("click", async function () {
+    const url = $("#input").val().trim(); // URLを取得
+    if (!url) {
+      alert("URLを入力してください");
+      return;
+    }
 
-  </div>
-  <!-- //container -->
+    // URLからイベントIDを抽出
+    const eventIdMatch = url.match(/event\/(\d+)/);
+    if (!eventIdMatch) {
+      alert("正しいイベントURLを入力してください");
+      return;
+    }
+    const eventId = eventIdMatch[1];
+
+    try {
+      // Connpass APIからデータ取得
+      const apiUrl = `https://connpass.com/api/v1/event/?event_id=${eventId}`;
+      const response = await fetch(apiUrl);
+      if (!response.ok) {
+        throw new Error("APIの呼び出しに失敗しました");
+      }
+
+      const data = await response.json();
+
+      // 参加者一覧を整形して表示
+      if (data.events && data.events.length > 0) {
+        const event = data.events[0];
+        const participants = event.accepted || 0; // 承認済み参加者数
+        const waiting = event.waiting || 0; // 補欠者数
+        const result = `イベント名: ${event.title}\n承認済み参加者: ${participants}\n補欠者数: ${waiting}`;
+        $("#text_area").val(result);
+      } else {
+        $("#text_area").val("イベントデータが見つかりませんでした。");
+      }
+    } catch (error) {
+      console.error(error);
+      $("#text_area").val("データの取得中にエラーが発生しました。");
+    }
+  });
+
+  // Clearボタンをクリック
+  $("#clear").on("click", function () {
+    $("#input").val("");
+    $("#text_area").val("");
+  });
+</script>
 </body>
 </html>

@@ -5,14 +5,14 @@
 しなくても大丈夫です♪
 -----------------*/
 body{
-	overflow-x : hidden;
-	font-family: Roboto, "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
-	line-height: 1.75;
-	text-align: justify;
-	font-size: 16px;
-	color: #111;
+  overflow-x : hidden;
+  font-family: Roboto, "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体", "ヒラギノ角ゴ Pro W3", "メイリオ", sans-serif;
+  line-height: 1.75;
+  text-align: justify;
+  font-size: 16px;
+  color: #111;
   font-weight: 400;
-	-webkit-font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
@@ -21,13 +21,13 @@ body{
 
 /*　パディングをサイズ内側にする処理　*/
 * {
-	padding:0;
-	margin:0;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	-o-box-sizing: border-box;
-	-ms-box-sizing: border-box;
-	box-sizing: border-box;
+  padding:0;
+  margin:0;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -o-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 /*ーーーーーーーーーーー*/
@@ -62,11 +62,76 @@ cmn設定
 }
 
 a {
-	color: inherit;
-	&:hover {
-		img {
-			opacity: 0.7;
-		}
-	}
+  color: inherit;
+  &:hover {
+    img {
+      opacity: 0.7;
+    }
+  }
+}
+
+/* ------------------------------------
+
+Page設定
+
+------------------------------------ */
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+.title_section {
+  h1 {
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+  }
+}
+
+input[type="text"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.2);
+}
+
+textarea {
+  min-height: 100px;
+  margin-top: 10px;
+}
+
+ul {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  li {
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #c82a16;
+    color: #fff;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+    transition: background 0.3s, transform 0.2s;
+    margin: 0 5px;
+    &:hover {
+      background: #a82410;
+      transform: scale(1.05);
+    }
+    &:active {
+      transform: scale(0.95);
+    }
+  }
 }
 
