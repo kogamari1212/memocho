@@ -55,10 +55,10 @@
   fetch(`${proxyUrl}?event_id=${eventId}`)
   .then(response => response.json())
   .then(data => {
-    console.log(data);
+    console.log(data); // 正常に取得できればデータが表示される
   })
   .catch(error => {
-    console.error("Error:", error);
+    console.error("Error:", error); // エラー時の処理
   });
 
   const baseApiUrl = "https://connpass.com/api/v1/event/";
